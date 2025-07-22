@@ -118,7 +118,7 @@
 
     </div>
     <div class="text-center mt-4">
-      <a href="course.php" class="btn btn-outline-primary">View All Courses</a>
+      <a href="course.php" class="btn btn-primary">View All Courses</a>
     </div>
   </div>
 </section>
