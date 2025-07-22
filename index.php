@@ -81,6 +81,51 @@
   </div>
 </section>
 
+<!-- Featured Courses Section -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center fw-bold mb-4 text-primary">🎓 Featured Courses</h2>
+    <div class="row">
+
+      <?php
+      include 'db.php'; // make sure this points to your db connection file
+
+      $sql = "SELECT * FROM courses LIMIT 3"; // Show only 3 on homepage
+      $result = mysqli_query($conn, $sql);
+
+      if (mysqli_num_rows($result) > 0) {
+        while ($course = mysqli_fetch_assoc($result)) {
+          ?>
+          <div class="col-md-4 mb-4">
+            <div class="card shadow h-100 border-0">
+              <img src="<?php echo $course['image']; ?>" class="card-img-top" style="height:200px; object-fit:cover;" alt="<?php echo $course['title']; ?>">
+              <div class="card-body">
+                <h5 class="card-title text-primary"><?php echo $course['title']; ?></h5>
+                <p class="card-text"><?php echo substr($course['description'], 0, 100); ?>...</p>
+                <p><strong>Duration:</strong> <?php echo $course['duration']; ?></p>
+                <p><strong>Requirement:</strong> <?php echo $course['requirement']; ?></p>
+                <p><strong>Fee:</strong> ₹<?php echo $course['fee']; ?></p>
+                <a href="apply.php?id=<?php echo $course['id']; ?>" class="btn btn-success">Apply Now</a>
+              </div>
+            </div>
+          </div>
+          <?php
+        }
+      } else {
+        echo "<p class='text-center'>No courses found.</p>";
+      }
+      ?>
+
+    </div>
+    <div class="text-center mt-4">
+      <a href="course.php" class="btn btn-outline-primary">View All Courses</a>
+    </div>
+  </div>
+</section>
+
+
+
+
 
 
 <!-- How It Works Section -->
